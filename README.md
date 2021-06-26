@@ -1,4 +1,5 @@
 # Ai-Vol-Control
+by this pyhton script you can control your pc volume by just moving your right hand fingers
 
 ## About
 

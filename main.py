@@ -41,7 +41,7 @@ with holi.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as
             x2,y2,z2 = result.right_hand_landmarks.landmark[8].x,result.right_hand_landmarks.landmark[8].y,result.right_hand_landmarks.landmark[8].z
                                                                                                     #Collecting the coordinates of our index finger
                                                                                                     
-            imgH, imgW  = frame.shape           #Getting the height and width of our webcam screen
+            imgH, imgW  = frame.shape[0], frame.shape[1]           #Getting the height and width of our webcam screen
             x1Pos, y1Pos = int(imgW*x1), int(imgH*y1)   #Finding the real coordinates of our thumb
             x2Pos, y2Pos = int(imgW*x2), int(imgH*y2)   #Finding the real coordinates of our index finger
             cx,cy = int((x2Pos+x1Pos)/2) , int((y2Pos+y1Pos)/2) #Finding the the middle coordinates between the point thumb and index finger
@@ -49,7 +49,7 @@ with holi.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as
 
             cv.circle(img,(x1Pos,y1Pos),5,(0,0,255),cv.FILLED)  #drawing a circle on the point of our thumb
             cv.circle(img,(x2Pos,y2Pos),5,(0,0,255),cv.FILLED)  #drawing a circle on the point of our index finger
-            cv.line(img,(x1Pos,y1Pos),(x2Pos,y2Pos),(255,0,0),3)    #drawing a line connecting our index and thumb
+            cv.line(img,(x1Pos,y1Pos),(x2Pos,y2Pos),(127,0,255),3)    #drawing a line connecting our index and thumb
             cv.circle(img,(cx,cy),8,(0,255,0), cv.FILLED)   #drawing a circle on the mid point of the line we have drawn before
 
             length = math.floor(math.hypot(x2Pos-x1Pos, y2Pos-y1Pos)) #finding the lenght between the point of thumb and index finger
